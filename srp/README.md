@@ -100,6 +100,8 @@ This is the felling that we will have when we see a component that have a well d
 # Coupling 
 The level of inter-dependency between various software components: Components that violate SRP usually are tight coupled.
 
+Code that have many reasons to change tends to have many dependencies. 
+
 ## Couping with concrete components is specially dangerous 
 We are exposed to internal implementation details of classes.
 
@@ -132,3 +134,9 @@ Income getIncome(Employee e, Repository repo){  // using dependency inversion pr
 ``` 
 
 ## If Module a know too much about Module B, changes to the internals of Module B may break functionality in Module A.
+
+"We want to design components that are self-contained: independent, and with a single, well-defined purpose". Andrew Hunt & David Thomas, The Pragmatic Programmer.
+
+## Steps to do SRP:
+- Correctly identify reasons to change.
+- Refactor responsibilities out to specialized components.
