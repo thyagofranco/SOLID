@@ -140,3 +140,4 @@ Income getIncome(Employee e, Repository repo){  // using dependency inversion pr
 ## Steps to do SRP:
 - Correctly identify reasons to change.
 - Refactor responsibilities out to specialized components.
+- Refactor the code to works with the new components.
