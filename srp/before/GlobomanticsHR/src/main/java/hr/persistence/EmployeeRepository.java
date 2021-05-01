@@ -1,9 +1,12 @@
 package hr.persistence;
 
-import hr.personnel.Employee;
-import hr.personnel.FullTimeEmployee;
-import hr.personnel.PartTimeEmployee;
+import hr.logging.ConsoleLogger;
+import hr.personnel.*;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Arrays;
 import java.util.List;
 
@@ -14,8 +17,13 @@ we are storing employees in the file system.
  */
 
 public class EmployeeRepository {
+    private EmployeeFileSerializer serializer;
 
-    public List<Employee> findAll(){
+    public EmployeeRepository(EmployeeFileSerializer serializer) {
+        this.serializer = serializer;
+    }
+
+    public List<Employee> findAll() {
 
         // Employees are kept in memory for simplicity
         Employee anna = new FullTimeEmployee("Anna Smith", 2000);
@@ -24,6 +32,20 @@ public class EmployeeRepository {
         Employee steve = new PartTimeEmployee("Steve Jones", 800);
         Employee magda = new PartTimeEmployee("Magda Iovan", 920);
 
-        return Arrays.asList(anna, billy, steve, magda);
+        Employee john = new Intern("John Lee", 300, 10);
+        Employee catherine = new Intern("Catherine Allison", 500, 15);
+
+        // Subcontractors
+        Employee subcontractor = new Subcontractor("Rebekah Jackson", 3000);
+
+        return Arrays.asList(anna, billy, steve, magda, john, subcontractor, catherine);
+    }
+
+    public void save(Employee employee) throws IOException {
+        String serializedString = this.serializer.serialize(employee);
+
+        Path path = Paths.get(employee.getFullName()
+                .replace(" ", "_") + ".rec");
+        Files.write(path, serializedString.getBytes());
     }
 }
