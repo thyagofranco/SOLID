@@ -62,3 +62,9 @@ We add cost of customer responsiveness when our project have to much technical d
 - Repeat 
 
 ---------------------
+
+References: 
+Phan, Manh. Understanding about SOLID - Dependency Inversion Principle, 2015. https://ducmanhphan.github.io/2020-01-15-Understanding-about-SOLID-part-5/ 
+
+Geabunea, Dan. SOLID Software Design Principles in Java, 2020.
+https://www.pluralsight.com/courses/solid-software-design-principles-java
